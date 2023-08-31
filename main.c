@@ -1,26 +1,42 @@
 #include "monty.h"
+dat_t dat = {NULL};
 
 int
 main(int arc, char **arv)
 {
-	char *opcode;
-	int i = 0;
-	unsigned int a;
-	int line = 0;
+	FILE *file;
+	char *line_cont;
+	size_t ln = 0;
+	char *token;
+	char *line_cpy;
+	const char *delim = " ";
+	ssize_t read_line = 1;
+	unsigned int line = 0;
 	void (*ptr)(stack_t **, unsigned int);
 	stack_t *init_stack;
-
+	
 	init_stack = NULL;
-	while (arv[i])
+	if (arc != 2)
 		{
-			if (arv[i] == '\n')
-				line++;
+			fprintf(stderr, "USAGE: monty file\n");
+			exit(EXIT_FAILURE);
 		}
-	ptr = execute (arv);
-	if (ptr)
+
+	file = fopen(arv[1], "r");
+	while (read_line > 0)
 	{
-		a = atoi(arv[i + 1]);
-		ptr(init_stack, a);
+		line_cont = NULL;
+		read_line = getline(&line_cont, &ln, file);
+		line++;
+		line_cpy = strdup(line_cont);
+		token = strtok(line_cpy, delim);
+		while (token)
+		{
+			ptr = execute(token);
+			if (!ptr)
+				token = strtok(NULL, delim);
+			dat.arg = strtok(NULL, delim);
+			ptr(&init_stack, line);
+		}
 	}
-	i++;
 }

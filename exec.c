@@ -1,28 +1,23 @@
 #include "monty.h"
 
-int
-(*execute(char *args))(stack_t **, unsigned int)
+void
+(*execute(char *tk))(stack_t **, unsigned int)
 {
-	int f, i, c;
+	int c;
 
 	instruction_t mont[] = {
 				{"push", push},
-				{"pall", pall},
 				{NULL, NULL}
 			};
-	i = 0;
-	while (args[i])
+
+	c = 0;
+	while (c < 1)
 	{
-		c = 0;
-		while (c < 2)
+		if (strcmp(tk, mont[c].opcode) == 0)
 		{
-			if (strcmp(args[i], mont[c].opcode) == 0)
-			{
-				return (mont[c].f);
-			}
-			c++;
+			return (mont[c].f);
 		}
-		i++;
+		c++;
 	}
 	return (NULL);
 }

@@ -1,35 +1,25 @@
 #include "monty.h"
 
-int
-push(stack_t **st, unsigned int n)
+void
+push(stack_t **st, unsigned int line)
 {
-	stack_t *tmp;
-	stack_t *ptr = *st;
+	int i = 0, n;
 
-	if (!ptr)
+	if (dat.arg)
 	{
-		tmp = malloc(sizeof(stack_t));
-		tmp->n = n;
-		tmp->prev = NULL;
-		tmp->next = NULL;
-		ptr = tmp;
+		if (dat.arg[0] == '-')
+			i++;
+		for (; dat.arg[i] != '\0'; i++)
+		{
+			if (dat.arg[i] > 57 || dat.arg[i] < 48)
+			{
+				printf("dat.arg[%i] = %c\n", i, dat.arg[i]);
+				fprintf(stderr, "L%d: usage: push integer\n", line);
+				exit(EXIT_FAILURE);
+			}
+		}
 	}
-	else if (ptr->next)
-	{
-		while (ptr->next)
-			ptr = ptr->next;
-		tmp = malloc(sizeof(stack_t));
-		tmp->n = n;
-		tmp->prev = ptr;
-		tmp->next = NULL;
-		ptr->next = tmp;
-	}
-	else
-	{
-		tmp = malloc(sizeof(stack_t));
-		tmp->n = n;
-		tmp->prev = ptr;
-		tmp->next = NULL;
-		ptr->next = tmp;
-	}
+	printf("{push.c}--->m.1\n");
+	n = atoi(dat.arg);
+	add_node(st, n);
 }
