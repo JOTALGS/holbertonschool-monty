@@ -8,18 +8,22 @@ stack_t
 	
 	temp = malloc(sizeof(stack_t));
 	if (!temp)
-	{
-		fprintf(stderr, "malloc failed");
-		exit(EXIT_FAILURE);
-	}
+		return (0);
 	temp->n = n;
 	temp->next = NULL;
-	printf("{add_node.c]--->1\n");
-	if (!ptr)
+	if (ptr)
 	{
-		temp->prev = NULL;	
-		printf("{add_node.c}--->2\n");
+		while (ptr->next)
+		{
+			ptr = ptr->next;
+		}
+		ptr->next = temp;
+		temp->prev = ptr;
+	}
+	else
+	{
+		temp->prev = NULL;
 		*st = temp;
 	}
-	return (temp);
+	return (temp);	
 }

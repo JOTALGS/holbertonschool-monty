@@ -9,7 +9,7 @@ main(int arc, char **arv)
 	size_t ln = 0;
 	char *token;
 	char *line_cpy;
-	const char *delim = " \n";
+	const char *delim = " $\n";
 	ssize_t read_line = 1;
 	unsigned int line = 0;
 	void (*ptr)(stack_t **, unsigned int);
@@ -37,9 +37,14 @@ main(int arc, char **arv)
 				token = strtok(NULL, delim);
 			else
 			{
-				token = strtok(NULL, delim);
-				dat.arg = strdup(token);
+				if (strcmp(token, "pall") != 0)
+				{
+					token = strtok(NULL, delim);
+					dat.arg = strdup(token);
+				}
 				ptr(&init_stack, line);
+				if (strcmp(token, "pall") == 0)
+					token = strtok(NULL, delim);
 			}
 		}
 	}

@@ -7,11 +7,12 @@ void
 
 	instruction_t mont[] = {
 				{"push", push},
+				{"pall", pall_st},
 				{NULL, NULL}
 			};
 
 	c = 0;
-	while (c < 1)
+	while (c < 2)
 	{
 		if (strcmp(tk, mont[c].opcode) == 0)
 		{

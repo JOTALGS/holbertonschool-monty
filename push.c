@@ -11,14 +11,12 @@ push(stack_t **st, unsigned int line)
 			i++;
 		for (; dat.arg[i] != '\0'; i++)
 		{
-			printf("dat.arg: %d\n", dat.arg[i]);
-			if (dat.arg[i] > 57 || dat.arg[i] < 48)
+			if ((dat.arg[i] > 57 || dat.arg[i] < 48) && dat.arg[i] != 36)
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line);
 				exit(EXIT_FAILURE);
 			}
 		}
-		printf("{push.c}--->m.1\n");
 		n = atoi(dat.arg);
 		add_node(st, n);	
 	}
