@@ -20,4 +20,9 @@ push(stack_t **st, unsigned int line)
 		n = atoi(dat.arg);
 		add_node(st, n);	
 	}
+	else
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line);
+		exit(EXIT_FAILURE);
+	}
 }
