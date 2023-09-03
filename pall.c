@@ -7,12 +7,17 @@ pall_st (stack_t **st, unsigned int line)
 	(void)line;
 
 	ptr = *st;
-	if (!ptr)
-		printf("Empty stack.");
-	while (ptr->next)
+	if (ptr)
 	{
+		while (ptr->next)
+		{
+			ptr = ptr->next;
+		}
+		while(ptr->prev)
+		{
+			printf("%d\n", ptr->n);
+			ptr = ptr->prev;
+		}
 		printf("%d\n", ptr->n);
-		ptr = ptr->next;
 	}
-	printf("%d\n", ptr->n);
 }

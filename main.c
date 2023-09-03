@@ -23,6 +23,8 @@ main(int arc, char **arv)
 		}
 
 	file = fopen(arv[1], "r");
+	if (file)
+	{
 	while (read_line > 0)
 	{
 		line_cont = NULL;
@@ -37,7 +39,10 @@ main(int arc, char **arv)
 		{
 			ptr = execute(token);
 			if (!ptr)
-				token = strtok(NULL, delim);
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", line, token);
+				exit(EXIT_FAILURE);
+			}
 			else
 			{
 				if (strcmp(token, "pall") != 0)
@@ -50,8 +55,17 @@ main(int arc, char **arv)
 				}
 				ptr(&init_stack, line);
 				if (token && strcmp(token, "pall") == 0)
+				{
 					token = strtok(NULL, delim);
+				}
+				break;
 			}
 		}
+	}
+	}
+	else
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", arv[1]);
+		exit(EXIT_FAILURE);
 	}
 }
