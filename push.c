@@ -5,7 +5,7 @@ push(stack_t **st, unsigned int line)
 {
 	int i = 0, n;
 
-	if (dat.arg)
+	if (dat.arg != NULL)
 	{
 		if (dat.arg[0] == '-')
 			i++;

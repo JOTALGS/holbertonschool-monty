@@ -9,7 +9,7 @@ main(int arc, char **arv)
 	size_t ln = 0;
 	char *token;
 	char *line_cpy;
-	const char *delim = " $\n";
+	const char *delim = " $\n\t";
 	ssize_t read_line = 1;
 	unsigned int line = 0;
 	void (*ptr)(stack_t **, unsigned int);
@@ -28,7 +28,10 @@ main(int arc, char **arv)
 		line_cont = NULL;
 		read_line = getline(&line_cont, &ln, file);
 		line++;
-		line_cpy = strdup(line_cont);
+		if (read_line != 0)
+			line_cpy = strdup(line_cont);
+		else
+			line_cpy = "p ";
 		token = strtok(line_cpy, delim);
 		while (token)
 		{
@@ -40,10 +43,13 @@ main(int arc, char **arv)
 				if (strcmp(token, "pall") != 0)
 				{
 					token = strtok(NULL, delim);
-					dat.arg = strdup(token);
+					if (token)
+						dat.arg = strdup(token);
+					else
+						dat.arg = NULL;
 				}
 				ptr(&init_stack, line);
-				if (strcmp(token, "pall") == 0)
+				if (token && strcmp(token, "pall") == 0)
 					token = strtok(NULL, delim);
 			}
 		}
