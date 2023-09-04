@@ -11,9 +11,13 @@ pint_st(stack_t **st, unsigned int line)
 	{
 		while (ptr->next)
 		{
-			printf("%d\n", ptr->n);
 			ptr = ptr->next;
 		}
 		printf("%d\n", ptr->n);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty", line);
+		exit(EXIT_FAILURE);
 	}
 }
