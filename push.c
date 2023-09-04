@@ -18,7 +18,7 @@ push(stack_t **st, unsigned int line)
 			}
 		}
 		n = atoi(dat.arg);
-		add_node(st, n);	
+		add_node(st, n);
 	}
 	else
 	{

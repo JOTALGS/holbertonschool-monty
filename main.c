@@ -5,7 +5,7 @@ int
 main(int arc, char **arv)
 {
 	FILE *file;
-	char *line_cont;
+	char *line_cont, *str;
 	size_t ln = 0;
 	char *token;
 	char *line_cpy;
@@ -49,11 +49,15 @@ main(int arc, char **arv)
 				{
 					token = strtok(NULL, delim);
 					if (token)
-						dat.arg = strdup(token);
+					{
+						str = strdup(token);
+						dat.arg = str;
+					}
 					else
 						dat.arg = NULL;
 				}
 				ptr(&init_stack, line);
+				free(str);
 				if (token && strcmp(token, "pall") == 0)
 				{
 					token = strtok(NULL, delim);
@@ -61,6 +65,8 @@ main(int arc, char **arv)
 				break;
 			}
 		}
+		free(line_cpy);
+		free(line_cont);
 	}
 	}
 	else
@@ -68,4 +74,6 @@ main(int arc, char **arv)
 		fprintf(stderr, "Error: Can't open file %s\n", arv[1]);
 		exit(EXIT_FAILURE);
 	}
+	free_stack(init_stack);
+	fclose(file);
 }
