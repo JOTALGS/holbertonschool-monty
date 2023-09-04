@@ -13,7 +13,7 @@ void
 			};
 
 	c = 0;
-	while (c < 2)
+	while (c < 3)
 	{
 		if (strcmp(tk, mont[c].opcode) == 0)
 		{
