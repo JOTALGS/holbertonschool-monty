@@ -47,5 +47,6 @@ void push(stack_t **st, unsigned int n);
 void add_node(stack_t **st, const int n);
 void pall_st(stack_t **st, unsigned int line);
 void pint_st(stack_t **st, unsigned int line);
+void pop(stack_t **st, unsigned int line);
 void free_stack(stack_t *head);
 #endif
