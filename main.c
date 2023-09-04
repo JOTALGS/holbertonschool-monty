@@ -15,13 +15,13 @@ main(int arc, char **arv)
 	unsigned int line = 0;
 	void (*ptr)(stack_t **, unsigned int);
 	stack_t *init_stack;
-	
+
 	init_stack = NULL;
 	if (arc != 2)
-		{
-			fprintf(stderr, "USAGE: monty file\n");
-			exit(EXIT_FAILURE);
-		}
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
 	file = fopen(arv[1], "r");
 	if (file)

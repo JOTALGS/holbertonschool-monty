@@ -1,7 +1,7 @@
 #include "monty.h"
 
 void
-pall_st (stack_t **st, unsigned int line)
+pall_st(stack_t **st, unsigned int line)
 {
 	stack_t *ptr;
 	(void)line;
@@ -13,7 +13,7 @@ pall_st (stack_t **st, unsigned int line)
 		{
 			ptr = ptr->next;
 		}
-		while(ptr->prev)
+		while (ptr->prev)
 		{
 			printf("%d\n", ptr->n);
 			ptr = ptr->prev;

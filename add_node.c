@@ -5,7 +5,7 @@ add_node(stack_t **st, const int n)
 {
 	stack_t *temp;
 	stack_t *ptr = *st;
-	
+
 	temp = malloc(sizeof(stack_t));
 	if (!temp)
 		exit(EXIT_FAILURE);
