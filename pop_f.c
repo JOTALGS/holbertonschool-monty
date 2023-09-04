@@ -18,7 +18,11 @@ pop(stack_t **st, unsigned int line)
 		temp = temp->prev;
 		temp->next = NULL;
 		*st = temp;
+		free(temp);
 	}
 	else
+	{
+		free(temp);
 		*st = NULL;
+	}
 }
