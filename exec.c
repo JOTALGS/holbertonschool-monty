@@ -8,6 +8,7 @@ void
 	instruction_t mont[] = {
 				{"push", push},
 				{"pall", pall_st},
+				{"pint", pint_st},
 				{NULL, NULL}
 			};
 
