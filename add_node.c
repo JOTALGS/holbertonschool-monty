@@ -25,5 +25,4 @@ add_node(stack_t **st, const int n)
 		temp->prev = NULL;
 		*st = temp;
 	}
-	free(temp);	
 }
