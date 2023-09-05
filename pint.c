@@ -7,7 +7,7 @@ pint_st(stack_t **st, unsigned int line)
 
 	if (*st == NULL)
 	{
-		freeList(*st);
+		free_stack(st);
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
