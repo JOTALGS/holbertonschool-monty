@@ -22,7 +22,7 @@ push(stack_t **st, unsigned int line)
 		}
 		n = atoi(dat.arg);
 		new_node = malloc(sizeof(stack_t));
-		if (!new_node)	
+		if (!new_node)
 			exit(EXIT_FAILURE);
 		if (ptr)
 		{
@@ -38,7 +38,7 @@ push(stack_t **st, unsigned int line)
 			*st = new_node;
 		}
 		new_node->n = n;
-		new_node->next = NULL;	
+		new_node->next = NULL;
 	}
 	else
 	{
