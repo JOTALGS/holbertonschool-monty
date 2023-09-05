@@ -9,6 +9,8 @@ pall_st(stack_t **st, unsigned int line)
 	ptr = *st;
 	if (ptr)
 	{
+		while (ptr->prev)
+			ptr = ptr->prev;
 		while (ptr->next)
 		{
 			ptr = ptr->next;
