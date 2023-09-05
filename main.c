@@ -70,5 +70,5 @@ main(int arc, char **arv)
 		fprintf(stderr, "Error: Can't open file %s\n", arv[1]);
 		exit(EXIT_FAILURE);
 	}
-	free_stack(init_stack);
+	free_stack(&init_stack);
 }

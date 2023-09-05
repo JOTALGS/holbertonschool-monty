@@ -1,15 +1,13 @@
 #include "monty.h"
 
 void
-free_stack(stack_t *st)
+free_stack(stack_t **st)
 {
-	stack_t *temp;
+	stack_t *ptr = *st;
 
-	temp = st;
-	while (st)
+	while (ptr)
 	{
-		temp = st->next;
-		free(st);
-		st = temp;
+		free(ptr);
+		ptr = ptr->next;
 	}
 }
