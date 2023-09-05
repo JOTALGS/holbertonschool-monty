@@ -11,11 +11,13 @@ void
 				{"pint", pint_st},
 				{"pop", pop},
 				{"swap", swap},
+				{"add", add},
+				{"nop", nop},
 				{NULL, NULL}
 			};
 
 	c = 0;
-	while (c < 5)
+	while (c < 7)
 	{
 		if (strcmp(tk, mont[c].opcode) == 0)
 		{

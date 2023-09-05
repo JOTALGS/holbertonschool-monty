@@ -49,5 +49,7 @@ void pall_st(stack_t **st, unsigned int line);
 void pint_st(stack_t **st, unsigned int line);
 void pop(stack_t **st, unsigned int line);
 void swap(stack_t **st, unsigned int line);
+void add(stack_t **st, unsigned int line);
+void nop(stack_t **st, unsigned int line);
 void free_stack(stack_t **st);
 #endif
