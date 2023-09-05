@@ -39,6 +39,7 @@ typedef struct instruction_s
 typedef struct dat_s
 {
 	char *arg;
+	stack_t *ptr;
 } dat_t;
 extern dat_t dat;
 
@@ -48,5 +49,6 @@ void add_node(stack_t **st, const int n);
 void pall_st(stack_t **st, unsigned int line);
 void pint_st(stack_t **st, unsigned int line);
 void pop(stack_t **st, unsigned int line);
+void swap(stack_t **st, unsigned int line);
 void free_stack(stack_t *head);
 #endif

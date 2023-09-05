@@ -4,10 +4,15 @@ void
 pop(stack_t **st, unsigned int line)
 {
 	stack_t *temp;
-	
-	if(!*st)
+
+	temp = malloc(sizeof(stack_t));
+	if (!temp)
+		exit(EXIT_FAILURE);
+	if (!*st)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
+		free(temp);
+		free_stack(*st);
 		exit(EXIT_FAILURE);
 	}
 	temp = *st;
@@ -18,11 +23,9 @@ pop(stack_t **st, unsigned int line)
 		temp = temp->prev;
 		temp->next = NULL;
 		*st = temp;
-		free(temp);
 	}
 	else
 	{
-		free(temp);
 		*st = NULL;
 	}
 }

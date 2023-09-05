@@ -19,11 +19,11 @@ add_node(stack_t **st, const int n)
 		}
 		ptr->next = temp;
 		temp->prev = ptr;
+		*st = temp;
 	}
 	else
 	{
 		temp->prev = NULL;
 		*st = temp;
 	}
-	free(temp);
 }
