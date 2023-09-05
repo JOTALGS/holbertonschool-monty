@@ -12,7 +12,7 @@ add(stack_t **st, unsigned int line)
 		free_stack(st);
 		exit(EXIT_FAILURE);
 	}
-	while(ptr->prev)
+	while (ptr->prev)
 		ptr = ptr->prev;
 	while (ptr->next)
 	{
