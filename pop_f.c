@@ -28,5 +28,4 @@ pop(stack_t **st, unsigned int line)
 	{
 		*st = NULL;
 	}
-	free(temp);
 }
